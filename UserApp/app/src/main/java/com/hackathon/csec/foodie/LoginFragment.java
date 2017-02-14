@@ -69,6 +69,7 @@ public class LoginFragment extends Fragment {
         permission.add("user_friends");
         loginButton.setReadPermissions(permission);
         callbackManager=CallbackManager.Factory.create();
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -105,6 +106,7 @@ public class LoginFragment extends Fragment {
 
                     }
                 });
+
                 Bundle b=new Bundle();
                 b.putString("fields","name,email,id");
                 graphRequest.setParameters(b);
@@ -146,10 +148,15 @@ public class LoginFragment extends Fragment {
                     Log.v("ID", r.userId);
                     sharedPref.setLoginStatus(true);
                     sharedPref.setUserKey(r.userId);
-                    sharedPref.setLoginSkipStatus(true);
+                    sharedPref.setLoginSkipStatus(false);
                     progressBar.setVisibility(View.GONE);
-                    getActivity().startActivity(new Intent(getActivity(),MainActivity.class));
+
+                    Intent in=new Intent(getActivity(),MainActivity.class);
+                    in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                    getActivity().startActivity(in);
                     getActivity().finish();
+
 
                 }
                 else{

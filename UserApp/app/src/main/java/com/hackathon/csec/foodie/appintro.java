@@ -7,7 +7,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -22,21 +24,19 @@ public class appintro extends AppIntro {
 
         final SharedPref sharedPref=new SharedPref(this);
 
-        if(sharedPref.getLoginSkipStatus()){
+        if(sharedPref.getLoginStatus()){
             startActivity(new Intent(appintro.this,MainActivity.class));
+            finish();
+        }else if(sharedPref.getLoginSkipStatus()){
+            startActivity(new Intent(appintro.this,LoginActivity.class));
             finish();
         }
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
-        addSlide(new Inro1());
+        addSlide(new Intro1());
         addSlide(new Intro2());
-        addSlide(new intro3());
-
-        //setVibrate(true);
-        //setVibrateIntensity(30);
-
+        addSlide(new Intro3());
 
     }
 
@@ -56,4 +56,33 @@ public class appintro extends AppIntro {
         finish();
 
     }
+
+    public static class Intro1 extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment1, container, false);
+        }
+    }
+
+    public static class Intro2 extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_intro2, container, false);
+        }
+
+    }
+
+    public static class Intro3 extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_intro3, container, false);
+        }
+    }
+
 }

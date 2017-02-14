@@ -15,11 +15,12 @@
     android:layout_height="match_parent">
 
 <ImageView
+    android:scaleType="centerCrop"
     android:layout_margin="5dp"
     android:src="#7ff279"
     android:id="@+id/img"
     android:layout_width="match_parent"
-    android:layout_height="120dp" />
+    android:layout_height="160dp" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -37,6 +38,16 @@
                 android:id="@+id/name"
                 android:textSize="20sp"
                 android:text="Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/rest"
+                android:textSize="16sp"
+                android:text="Restaurant Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -65,9 +76,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-
             <TextView
-                android:id="@+id/price"
+                android:id="@+id/rate_cart"
                 android:layout_toRightOf="@+id/symbol"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
@@ -87,24 +97,25 @@
                     android:textSize="20sp"
                     android:text="+"
                     android:id="@+id/add"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/value"
                     android:layout_toRightOf="@+id/value"
                     android:textSize="20sp"
                     android:text="1"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content" />
 
                 <Button
                     android:textSize="20sp"
                     android:text="-"
                     android:id="@+id/min"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
